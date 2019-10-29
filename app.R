@@ -37,7 +37,7 @@ party_colors <- data.frame(Party=c("Conservative",
                                    "rgb(51, 153, 255)"))
 full_dat <- data.frame()
 for(year in c(2006, 2008, 2011, 2015)){
-    full_dat <- rbind(full_dat, read.csv(paste(year, '_election_combined.csv',
+    full_dat <- rbind(full_dat, read.csv(paste('./data/', year, '_election_combined.csv',
                                                sep=""),))
 }
 
@@ -176,8 +176,9 @@ ui <- fluidPage(
                                             ' for: ',
                                             paste(ridings, sep=", "),
                                             sep=""),
-                              xaxis=list(title='Election Year'),
-                              yaxis=list(title='Votes'))
+                              yaxis=list(title='Votes'),
+                              legend = list(orientation = 'h')
+                              )
             p
         })
         
@@ -222,8 +223,8 @@ ui <- fluidPage(
                                             ' by ',
                                             typ,
                                             sep=""),
-                              xaxis=list(title='Election Year'),
-                              yaxis=list(title='Seats'))
+                              yaxis=list(title='Seats'),
+                              legend = list(orientation = 'h'))
             p
         })
 
